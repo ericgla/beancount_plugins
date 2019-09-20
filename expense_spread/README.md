@@ -4,8 +4,8 @@ Beancount [1] plugin to spread an expense across multiple dates.  Useful for rep
 ## Motivation
 A single expense that applies for multiple months is common.  Consider the case of a quarterly gym membership fee
 where a single expense is incurred and the membership is active for the entire quarter.  For reporting purposes
-it would make sense to have this expense split (spread) across each of the 4 months with the monthly expense
-being 1/4th of the cost of the membership.  Ideally we could simply post-date the expenses like this:
+it would make sense to have this expense split (spread) across each of the 3 months with the monthly expense
+being 1/3th of the cost of the membership.  Ideally we could simply post-date the expenses like this:
 
 ```
 2019-01-01 * "Resolution Gym"
@@ -15,7 +15,7 @@ being 1/4th of the cost of the membership.  Ideally we could simply post-date th
   Expenses:Gym                      80 USD ;; Mar
 ```
 
-This is not supported in Beancount, but there is a proposal being [discussed](https://docs.google.com/document/d/1x0qqWGRHi02ef-FtUW172SHkdJ8quOZD-Xli7r4Nl_k/edit)
+This is not supported in Beancount, but there is a proposal being [discussed](https://docs.google.com/document/d/1x0qqWGRHi02ef-FtUW172SHkdJ8quOZD-Xli7r4Nl_k/edit).
 
 ## How the plugin works
 
@@ -31,7 +31,7 @@ The plugin identifies the posting to spread by looking for metadata on a posting
 The plugin will do the following:
 
 * Create a transfer account named ```Expenses:Spread-Transfer```
-* Change the account for the original expense to the spread account
+* Change the account for the original expense to ```Expenses:Spread-Transfer```
 * Generate an entry for each of the dates in for the ```spread``` metadata
 
 The result would be:
